@@ -52,6 +52,27 @@ namespace SymphonyOSS.RestApiClient.Generated.OpenApi.PodApi.Api
         /// <returns>ApiResponse of StringList</returns>
         ApiResponse<StringList> V1AdminSystemFeaturesListGetWithHttpInfo (string sessionToken);
         /// <summary>
+        /// Get a list of all URI protocols supported by the company (pod)
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="SymphonyOSS.RestApiClient.Generated.OpenApi.PodApi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="sessionToken">Session authentication token.</param>
+        /// <returns>StringList</returns>
+        StringList V1AdminSystemProtocolsListGet (string sessionToken);
+
+        /// <summary>
+        /// Get a list of all URI protocols supported by the company (pod)
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="SymphonyOSS.RestApiClient.Generated.OpenApi.PodApi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="sessionToken">Session authentication token.</param>
+        /// <returns>ApiResponse of StringList</returns>
+        ApiResponse<StringList> V1AdminSystemProtocolsListGetWithHttpInfo (string sessionToken);
+        /// <summary>
         /// PROVISIONAL Get a list of all roles available in the company (pod)
         /// </summary>
         /// <remarks>
@@ -95,6 +116,27 @@ namespace SymphonyOSS.RestApiClient.Generated.OpenApi.PodApi.Api
         /// <param name="sessionToken">Session authentication token.</param>
         /// <returns>Task of ApiResponse (StringList)</returns>
         System.Threading.Tasks.Task<ApiResponse<StringList>> V1AdminSystemFeaturesListGetAsyncWithHttpInfo (string sessionToken);
+        /// <summary>
+        /// Get a list of all URI protocols supported by the company (pod)
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="SymphonyOSS.RestApiClient.Generated.OpenApi.PodApi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="sessionToken">Session authentication token.</param>
+        /// <returns>Task of StringList</returns>
+        System.Threading.Tasks.Task<StringList> V1AdminSystemProtocolsListGetAsync (string sessionToken);
+
+        /// <summary>
+        /// Get a list of all URI protocols supported by the company (pod)
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="SymphonyOSS.RestApiClient.Generated.OpenApi.PodApi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="sessionToken">Session authentication token.</param>
+        /// <returns>Task of ApiResponse (StringList)</returns>
+        System.Threading.Tasks.Task<ApiResponse<StringList>> V1AdminSystemProtocolsListGetAsyncWithHttpInfo (string sessionToken);
         /// <summary>
         /// PROVISIONAL Get a list of all roles available in the company (pod)
         /// </summary>
@@ -340,6 +382,147 @@ namespace SymphonyOSS.RestApiClient.Generated.OpenApi.PodApi.Api
                 throw new ApiException (localVarStatusCode, "Error calling V1AdminSystemFeaturesListGet: " + localVarResponse.Content, localVarResponse.Content);
             else if (localVarStatusCode == 0)
                 throw new ApiException (localVarStatusCode, "Error calling V1AdminSystemFeaturesListGet: " + localVarResponse.ErrorMessage, localVarResponse.ErrorMessage);
+
+            return new ApiResponse<StringList>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (StringList) Configuration.ApiClient.Deserialize(localVarResponse, typeof(StringList)));
+            
+        }
+
+        /// <summary>
+        /// Get a list of all URI protocols supported by the company (pod) 
+        /// </summary>
+        /// <exception cref="SymphonyOSS.RestApiClient.Generated.OpenApi.PodApi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="sessionToken">Session authentication token.</param>
+        /// <returns>StringList</returns>
+        public StringList V1AdminSystemProtocolsListGet (string sessionToken)
+        {
+             ApiResponse<StringList> localVarResponse = V1AdminSystemProtocolsListGetWithHttpInfo(sessionToken);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Get a list of all URI protocols supported by the company (pod) 
+        /// </summary>
+        /// <exception cref="SymphonyOSS.RestApiClient.Generated.OpenApi.PodApi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="sessionToken">Session authentication token.</param>
+        /// <returns>ApiResponse of StringList</returns>
+        public ApiResponse< StringList > V1AdminSystemProtocolsListGetWithHttpInfo (string sessionToken)
+        {
+            // verify the required parameter 'sessionToken' is set
+            if (sessionToken == null)
+                throw new ApiException(400, "Missing required parameter 'sessionToken' when calling SystemApi->V1AdminSystemProtocolsListGet");
+
+            var localVarPath = "/v1/admin/system/protocols/list";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new Dictionary<String, String>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            // set "format" to json by default
+            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
+            localVarPathParams.Add("format", "json");
+            if (sessionToken != null) localVarHeaderParams.Add("sessionToken", Configuration.ApiClient.ParameterToString(sessionToken)); // header parameter
+
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (localVarStatusCode >= 400)
+                throw new ApiException (localVarStatusCode, "Error calling V1AdminSystemProtocolsListGet: " + localVarResponse.Content, localVarResponse.Content);
+            else if (localVarStatusCode == 0)
+                throw new ApiException (localVarStatusCode, "Error calling V1AdminSystemProtocolsListGet: " + localVarResponse.ErrorMessage, localVarResponse.ErrorMessage);
+
+            return new ApiResponse<StringList>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (StringList) Configuration.ApiClient.Deserialize(localVarResponse, typeof(StringList)));
+            
+        }
+
+        /// <summary>
+        /// Get a list of all URI protocols supported by the company (pod) 
+        /// </summary>
+        /// <exception cref="SymphonyOSS.RestApiClient.Generated.OpenApi.PodApi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="sessionToken">Session authentication token.</param>
+        /// <returns>Task of StringList</returns>
+        public async System.Threading.Tasks.Task<StringList> V1AdminSystemProtocolsListGetAsync (string sessionToken)
+        {
+             ApiResponse<StringList> localVarResponse = await V1AdminSystemProtocolsListGetAsyncWithHttpInfo(sessionToken);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Get a list of all URI protocols supported by the company (pod) 
+        /// </summary>
+        /// <exception cref="SymphonyOSS.RestApiClient.Generated.OpenApi.PodApi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="sessionToken">Session authentication token.</param>
+        /// <returns>Task of ApiResponse (StringList)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<StringList>> V1AdminSystemProtocolsListGetAsyncWithHttpInfo (string sessionToken)
+        {
+            // verify the required parameter 'sessionToken' is set
+            if (sessionToken == null)
+                throw new ApiException(400, "Missing required parameter 'sessionToken' when calling SystemApi->V1AdminSystemProtocolsListGet");
+
+            var localVarPath = "/v1/admin/system/protocols/list";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new Dictionary<String, String>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            // set "format" to json by default
+            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
+            localVarPathParams.Add("format", "json");
+            if (sessionToken != null) localVarHeaderParams.Add("sessionToken", Configuration.ApiClient.ParameterToString(sessionToken)); // header parameter
+
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (localVarStatusCode >= 400)
+                throw new ApiException (localVarStatusCode, "Error calling V1AdminSystemProtocolsListGet: " + localVarResponse.Content, localVarResponse.Content);
+            else if (localVarStatusCode == 0)
+                throw new ApiException (localVarStatusCode, "Error calling V1AdminSystemProtocolsListGet: " + localVarResponse.ErrorMessage, localVarResponse.ErrorMessage);
 
             return new ApiResponse<StringList>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),

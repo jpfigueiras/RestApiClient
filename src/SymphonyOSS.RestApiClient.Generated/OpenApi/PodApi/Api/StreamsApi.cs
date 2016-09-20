@@ -34,6 +34,29 @@ namespace SymphonyOSS.RestApiClient.Generated.OpenApi.PodApi.Api
         /// Create a new single or multi party instant message conversation
         /// </summary>
         /// <remarks>
+        /// At least two user IDs must be provided or\nan error response will be sent.\n\nThe caller is not included in the members of the\ncreated chat.\n\nDuplicate users will be included in the membership of the chat but\nthe duplication will be silently ignored.\n\nIf there is an existing IM conversation with the same set of participants then\nthe id of that existing stream will be returned.\n
+        /// </remarks>
+        /// <exception cref="SymphonyOSS.RestApiClient.Generated.OpenApi.PodApi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="uidList">List of (integer) User IDs of participants</param>
+        /// <param name="sessionToken">Session authentication token.</param>
+        /// <returns>Stream</returns>
+        Stream V1AdminImCreatePost (UserIdList uidList, string sessionToken);
+
+        /// <summary>
+        /// Create a new single or multi party instant message conversation
+        /// </summary>
+        /// <remarks>
+        /// At least two user IDs must be provided or\nan error response will be sent.\n\nThe caller is not included in the members of the\ncreated chat.\n\nDuplicate users will be included in the membership of the chat but\nthe duplication will be silently ignored.\n\nIf there is an existing IM conversation with the same set of participants then\nthe id of that existing stream will be returned.\n
+        /// </remarks>
+        /// <exception cref="SymphonyOSS.RestApiClient.Generated.OpenApi.PodApi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="uidList">List of (integer) User IDs of participants</param>
+        /// <param name="sessionToken">Session authentication token.</param>
+        /// <returns>ApiResponse of Stream</returns>
+        ApiResponse<Stream> V1AdminImCreatePostWithHttpInfo (UserIdList uidList, string sessionToken);
+        /// <summary>
+        /// Create a new single or multi party instant message conversation between the caller and specified users.
+        /// </summary>
+        /// <remarks>
         /// At least one user ID must be provided or\nan error response will be sent.\n\nThe caller is implicitly included in the members of the\ncreated chat.\n\nDuplicate users will be included in the membership of the chat but\nthe duplication will be silently ignored.\n\nIf there is an existing IM conversation with the same set of participants then\nthe id of that existing stream will be returned.\n\nThis method was incorrectly specified to take a query parameter in\nversion 1.0 of this specification but now expects a JSON array of\nuser IDs in the body of the request.\n
         /// </remarks>
         /// <exception cref="SymphonyOSS.RestApiClient.Generated.OpenApi.PodApi.Client.ApiException">Thrown when fails to make API call</exception>
@@ -43,7 +66,7 @@ namespace SymphonyOSS.RestApiClient.Generated.OpenApi.PodApi.Api
         Stream V1ImCreatePost (UserIdList uidList, string sessionToken);
 
         /// <summary>
-        /// Create a new single or multi party instant message conversation
+        /// Create a new single or multi party instant message conversation between the caller and specified users.
         /// </summary>
         /// <remarks>
         /// At least one user ID must be provided or\nan error response will be sent.\n\nThe caller is implicitly included in the members of the\ncreated chat.\n\nDuplicate users will be included in the membership of the chat but\nthe duplication will be silently ignored.\n\nIf there is an existing IM conversation with the same set of participants then\nthe id of that existing stream will be returned.\n\nThis method was incorrectly specified to take a query parameter in\nversion 1.0 of this specification but now expects a JSON array of\nuser IDs in the body of the request.\n
@@ -150,6 +173,56 @@ namespace SymphonyOSS.RestApiClient.Generated.OpenApi.PodApi.Api
         /// <returns>ApiResponse of RoomDetail</returns>
         ApiResponse<RoomDetail> V1RoomIdUpdatePostWithHttpInfo (string id, RoomAttributes payload, string sessionToken);
         /// <summary>
+        /// Retrieve a list of all streams of which the requesting user is a member,\nsorted by creation date (ascending).\n
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="SymphonyOSS.RestApiClient.Generated.OpenApi.PodApi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="sessionToken">Session authentication token.</param>
+        /// <param name="skip">No. of results to skip.\n (optional)</param>
+        /// <param name="limit">Max no. of results to return. If no value is provided, 50 is the default.\n (optional)</param>
+        /// <param name="filter">Stream filtering criteria. (optional)</param>
+        /// <returns>StreamList</returns>
+        StreamList V1StreamsListPost (string sessionToken, int? skip = null, int? limit = null, StreamFilter filter = null);
+
+        /// <summary>
+        /// Retrieve a list of all streams of which the requesting user is a member,\nsorted by creation date (ascending).\n
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="SymphonyOSS.RestApiClient.Generated.OpenApi.PodApi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="sessionToken">Session authentication token.</param>
+        /// <param name="skip">No. of results to skip.\n (optional)</param>
+        /// <param name="limit">Max no. of results to return. If no value is provided, 50 is the default.\n (optional)</param>
+        /// <param name="filter">Stream filtering criteria. (optional)</param>
+        /// <returns>ApiResponse of StreamList</returns>
+        ApiResponse<StreamList> V1StreamsListPostWithHttpInfo (string sessionToken, int? skip = null, int? limit = null, StreamFilter filter = null);
+        /// <summary>
+        /// Get information about a partcular stream.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="SymphonyOSS.RestApiClient.Generated.OpenApi.PodApi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="sid">Stream Id</param>
+        /// <param name="sessionToken">Session authentication token.</param>
+        /// <returns>StreamAttributes</returns>
+        StreamAttributes V1StreamsSidInfoGet (string sid, string sessionToken);
+
+        /// <summary>
+        /// Get information about a partcular stream.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="SymphonyOSS.RestApiClient.Generated.OpenApi.PodApi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="sid">Stream Id</param>
+        /// <param name="sessionToken">Session authentication token.</param>
+        /// <returns>ApiResponse of StreamAttributes</returns>
+        ApiResponse<StreamAttributes> V1StreamsSidInfoGetWithHttpInfo (string sid, string sessionToken);
+        /// <summary>
         /// Create a new chatroom.
         /// </summary>
         /// <remarks>
@@ -253,6 +326,29 @@ namespace SymphonyOSS.RestApiClient.Generated.OpenApi.PodApi.Api
         /// Create a new single or multi party instant message conversation
         /// </summary>
         /// <remarks>
+        /// At least two user IDs must be provided or\nan error response will be sent.\n\nThe caller is not included in the members of the\ncreated chat.\n\nDuplicate users will be included in the membership of the chat but\nthe duplication will be silently ignored.\n\nIf there is an existing IM conversation with the same set of participants then\nthe id of that existing stream will be returned.\n
+        /// </remarks>
+        /// <exception cref="SymphonyOSS.RestApiClient.Generated.OpenApi.PodApi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="uidList">List of (integer) User IDs of participants</param>
+        /// <param name="sessionToken">Session authentication token.</param>
+        /// <returns>Task of Stream</returns>
+        System.Threading.Tasks.Task<Stream> V1AdminImCreatePostAsync (UserIdList uidList, string sessionToken);
+
+        /// <summary>
+        /// Create a new single or multi party instant message conversation
+        /// </summary>
+        /// <remarks>
+        /// At least two user IDs must be provided or\nan error response will be sent.\n\nThe caller is not included in the members of the\ncreated chat.\n\nDuplicate users will be included in the membership of the chat but\nthe duplication will be silently ignored.\n\nIf there is an existing IM conversation with the same set of participants then\nthe id of that existing stream will be returned.\n
+        /// </remarks>
+        /// <exception cref="SymphonyOSS.RestApiClient.Generated.OpenApi.PodApi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="uidList">List of (integer) User IDs of participants</param>
+        /// <param name="sessionToken">Session authentication token.</param>
+        /// <returns>Task of ApiResponse (Stream)</returns>
+        System.Threading.Tasks.Task<ApiResponse<Stream>> V1AdminImCreatePostAsyncWithHttpInfo (UserIdList uidList, string sessionToken);
+        /// <summary>
+        /// Create a new single or multi party instant message conversation between the caller and specified users.
+        /// </summary>
+        /// <remarks>
         /// At least one user ID must be provided or\nan error response will be sent.\n\nThe caller is implicitly included in the members of the\ncreated chat.\n\nDuplicate users will be included in the membership of the chat but\nthe duplication will be silently ignored.\n\nIf there is an existing IM conversation with the same set of participants then\nthe id of that existing stream will be returned.\n\nThis method was incorrectly specified to take a query parameter in\nversion 1.0 of this specification but now expects a JSON array of\nuser IDs in the body of the request.\n
         /// </remarks>
         /// <exception cref="SymphonyOSS.RestApiClient.Generated.OpenApi.PodApi.Client.ApiException">Thrown when fails to make API call</exception>
@@ -262,7 +358,7 @@ namespace SymphonyOSS.RestApiClient.Generated.OpenApi.PodApi.Api
         System.Threading.Tasks.Task<Stream> V1ImCreatePostAsync (UserIdList uidList, string sessionToken);
 
         /// <summary>
-        /// Create a new single or multi party instant message conversation
+        /// Create a new single or multi party instant message conversation between the caller and specified users.
         /// </summary>
         /// <remarks>
         /// At least one user ID must be provided or\nan error response will be sent.\n\nThe caller is implicitly included in the members of the\ncreated chat.\n\nDuplicate users will be included in the membership of the chat but\nthe duplication will be silently ignored.\n\nIf there is an existing IM conversation with the same set of participants then\nthe id of that existing stream will be returned.\n\nThis method was incorrectly specified to take a query parameter in\nversion 1.0 of this specification but now expects a JSON array of\nuser IDs in the body of the request.\n
@@ -368,6 +464,56 @@ namespace SymphonyOSS.RestApiClient.Generated.OpenApi.PodApi.Api
         /// <param name="sessionToken">Session authentication token.</param>
         /// <returns>Task of ApiResponse (RoomDetail)</returns>
         System.Threading.Tasks.Task<ApiResponse<RoomDetail>> V1RoomIdUpdatePostAsyncWithHttpInfo (string id, RoomAttributes payload, string sessionToken);
+        /// <summary>
+        /// Retrieve a list of all streams of which the requesting user is a member,\nsorted by creation date (ascending).\n
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="SymphonyOSS.RestApiClient.Generated.OpenApi.PodApi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="sessionToken">Session authentication token.</param>
+        /// <param name="skip">No. of results to skip.\n (optional)</param>
+        /// <param name="limit">Max no. of results to return. If no value is provided, 50 is the default.\n (optional)</param>
+        /// <param name="filter">Stream filtering criteria. (optional)</param>
+        /// <returns>Task of StreamList</returns>
+        System.Threading.Tasks.Task<StreamList> V1StreamsListPostAsync (string sessionToken, int? skip = null, int? limit = null, StreamFilter filter = null);
+
+        /// <summary>
+        /// Retrieve a list of all streams of which the requesting user is a member,\nsorted by creation date (ascending).\n
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="SymphonyOSS.RestApiClient.Generated.OpenApi.PodApi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="sessionToken">Session authentication token.</param>
+        /// <param name="skip">No. of results to skip.\n (optional)</param>
+        /// <param name="limit">Max no. of results to return. If no value is provided, 50 is the default.\n (optional)</param>
+        /// <param name="filter">Stream filtering criteria. (optional)</param>
+        /// <returns>Task of ApiResponse (StreamList)</returns>
+        System.Threading.Tasks.Task<ApiResponse<StreamList>> V1StreamsListPostAsyncWithHttpInfo (string sessionToken, int? skip = null, int? limit = null, StreamFilter filter = null);
+        /// <summary>
+        /// Get information about a partcular stream.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="SymphonyOSS.RestApiClient.Generated.OpenApi.PodApi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="sid">Stream Id</param>
+        /// <param name="sessionToken">Session authentication token.</param>
+        /// <returns>Task of StreamAttributes</returns>
+        System.Threading.Tasks.Task<StreamAttributes> V1StreamsSidInfoGetAsync (string sid, string sessionToken);
+
+        /// <summary>
+        /// Get information about a partcular stream.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="SymphonyOSS.RestApiClient.Generated.OpenApi.PodApi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="sid">Stream Id</param>
+        /// <param name="sessionToken">Session authentication token.</param>
+        /// <returns>Task of ApiResponse (StreamAttributes)</returns>
+        System.Threading.Tasks.Task<ApiResponse<StreamAttributes>> V1StreamsSidInfoGetAsyncWithHttpInfo (string sid, string sessionToken);
         /// <summary>
         /// Create a new chatroom.
         /// </summary>
@@ -557,7 +703,174 @@ namespace SymphonyOSS.RestApiClient.Generated.OpenApi.PodApi.Api
         }
 
         /// <summary>
-        /// Create a new single or multi party instant message conversation At least one user ID must be provided or\nan error response will be sent.\n\nThe caller is implicitly included in the members of the\ncreated chat.\n\nDuplicate users will be included in the membership of the chat but\nthe duplication will be silently ignored.\n\nIf there is an existing IM conversation with the same set of participants then\nthe id of that existing stream will be returned.\n\nThis method was incorrectly specified to take a query parameter in\nversion 1.0 of this specification but now expects a JSON array of\nuser IDs in the body of the request.\n
+        /// Create a new single or multi party instant message conversation At least two user IDs must be provided or\nan error response will be sent.\n\nThe caller is not included in the members of the\ncreated chat.\n\nDuplicate users will be included in the membership of the chat but\nthe duplication will be silently ignored.\n\nIf there is an existing IM conversation with the same set of participants then\nthe id of that existing stream will be returned.\n
+        /// </summary>
+        /// <exception cref="SymphonyOSS.RestApiClient.Generated.OpenApi.PodApi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="uidList">List of (integer) User IDs of participants</param>
+        /// <param name="sessionToken">Session authentication token.</param>
+        /// <returns>Stream</returns>
+        public Stream V1AdminImCreatePost (UserIdList uidList, string sessionToken)
+        {
+             ApiResponse<Stream> localVarResponse = V1AdminImCreatePostWithHttpInfo(uidList, sessionToken);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Create a new single or multi party instant message conversation At least two user IDs must be provided or\nan error response will be sent.\n\nThe caller is not included in the members of the\ncreated chat.\n\nDuplicate users will be included in the membership of the chat but\nthe duplication will be silently ignored.\n\nIf there is an existing IM conversation with the same set of participants then\nthe id of that existing stream will be returned.\n
+        /// </summary>
+        /// <exception cref="SymphonyOSS.RestApiClient.Generated.OpenApi.PodApi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="uidList">List of (integer) User IDs of participants</param>
+        /// <param name="sessionToken">Session authentication token.</param>
+        /// <returns>ApiResponse of Stream</returns>
+        public ApiResponse< Stream > V1AdminImCreatePostWithHttpInfo (UserIdList uidList, string sessionToken)
+        {
+            // verify the required parameter 'uidList' is set
+            if (uidList == null)
+                throw new ApiException(400, "Missing required parameter 'uidList' when calling StreamsApi->V1AdminImCreatePost");
+            // verify the required parameter 'sessionToken' is set
+            if (sessionToken == null)
+                throw new ApiException(400, "Missing required parameter 'sessionToken' when calling StreamsApi->V1AdminImCreatePost");
+
+            var localVarPath = "/v1/admin/im/create";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new Dictionary<String, String>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            // set "format" to json by default
+            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
+            localVarPathParams.Add("format", "json");
+            if (sessionToken != null) localVarHeaderParams.Add("sessionToken", Configuration.ApiClient.ParameterToString(sessionToken)); // header parameter
+            if (uidList.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = Configuration.ApiClient.Serialize(uidList); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = uidList; // byte array
+            }
+
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (localVarStatusCode >= 400)
+                throw new ApiException (localVarStatusCode, "Error calling V1AdminImCreatePost: " + localVarResponse.Content, localVarResponse.Content);
+            else if (localVarStatusCode == 0)
+                throw new ApiException (localVarStatusCode, "Error calling V1AdminImCreatePost: " + localVarResponse.ErrorMessage, localVarResponse.ErrorMessage);
+
+            return new ApiResponse<Stream>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (Stream) Configuration.ApiClient.Deserialize(localVarResponse, typeof(Stream)));
+            
+        }
+
+        /// <summary>
+        /// Create a new single or multi party instant message conversation At least two user IDs must be provided or\nan error response will be sent.\n\nThe caller is not included in the members of the\ncreated chat.\n\nDuplicate users will be included in the membership of the chat but\nthe duplication will be silently ignored.\n\nIf there is an existing IM conversation with the same set of participants then\nthe id of that existing stream will be returned.\n
+        /// </summary>
+        /// <exception cref="SymphonyOSS.RestApiClient.Generated.OpenApi.PodApi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="uidList">List of (integer) User IDs of participants</param>
+        /// <param name="sessionToken">Session authentication token.</param>
+        /// <returns>Task of Stream</returns>
+        public async System.Threading.Tasks.Task<Stream> V1AdminImCreatePostAsync (UserIdList uidList, string sessionToken)
+        {
+             ApiResponse<Stream> localVarResponse = await V1AdminImCreatePostAsyncWithHttpInfo(uidList, sessionToken);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Create a new single or multi party instant message conversation At least two user IDs must be provided or\nan error response will be sent.\n\nThe caller is not included in the members of the\ncreated chat.\n\nDuplicate users will be included in the membership of the chat but\nthe duplication will be silently ignored.\n\nIf there is an existing IM conversation with the same set of participants then\nthe id of that existing stream will be returned.\n
+        /// </summary>
+        /// <exception cref="SymphonyOSS.RestApiClient.Generated.OpenApi.PodApi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="uidList">List of (integer) User IDs of participants</param>
+        /// <param name="sessionToken">Session authentication token.</param>
+        /// <returns>Task of ApiResponse (Stream)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<Stream>> V1AdminImCreatePostAsyncWithHttpInfo (UserIdList uidList, string sessionToken)
+        {
+            // verify the required parameter 'uidList' is set
+            if (uidList == null)
+                throw new ApiException(400, "Missing required parameter 'uidList' when calling StreamsApi->V1AdminImCreatePost");
+            // verify the required parameter 'sessionToken' is set
+            if (sessionToken == null)
+                throw new ApiException(400, "Missing required parameter 'sessionToken' when calling StreamsApi->V1AdminImCreatePost");
+
+            var localVarPath = "/v1/admin/im/create";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new Dictionary<String, String>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            // set "format" to json by default
+            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
+            localVarPathParams.Add("format", "json");
+            if (sessionToken != null) localVarHeaderParams.Add("sessionToken", Configuration.ApiClient.ParameterToString(sessionToken)); // header parameter
+            if (uidList.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = Configuration.ApiClient.Serialize(uidList); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = uidList; // byte array
+            }
+
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (localVarStatusCode >= 400)
+                throw new ApiException (localVarStatusCode, "Error calling V1AdminImCreatePost: " + localVarResponse.Content, localVarResponse.Content);
+            else if (localVarStatusCode == 0)
+                throw new ApiException (localVarStatusCode, "Error calling V1AdminImCreatePost: " + localVarResponse.ErrorMessage, localVarResponse.ErrorMessage);
+
+            return new ApiResponse<Stream>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (Stream) Configuration.ApiClient.Deserialize(localVarResponse, typeof(Stream)));
+            
+        }
+
+        /// <summary>
+        /// Create a new single or multi party instant message conversation between the caller and specified users. At least one user ID must be provided or\nan error response will be sent.\n\nThe caller is implicitly included in the members of the\ncreated chat.\n\nDuplicate users will be included in the membership of the chat but\nthe duplication will be silently ignored.\n\nIf there is an existing IM conversation with the same set of participants then\nthe id of that existing stream will be returned.\n\nThis method was incorrectly specified to take a query parameter in\nversion 1.0 of this specification but now expects a JSON array of\nuser IDs in the body of the request.\n
         /// </summary>
         /// <exception cref="SymphonyOSS.RestApiClient.Generated.OpenApi.PodApi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="uidList">List of (integer) User IDs of participants</param>
@@ -570,7 +883,7 @@ namespace SymphonyOSS.RestApiClient.Generated.OpenApi.PodApi.Api
         }
 
         /// <summary>
-        /// Create a new single or multi party instant message conversation At least one user ID must be provided or\nan error response will be sent.\n\nThe caller is implicitly included in the members of the\ncreated chat.\n\nDuplicate users will be included in the membership of the chat but\nthe duplication will be silently ignored.\n\nIf there is an existing IM conversation with the same set of participants then\nthe id of that existing stream will be returned.\n\nThis method was incorrectly specified to take a query parameter in\nversion 1.0 of this specification but now expects a JSON array of\nuser IDs in the body of the request.\n
+        /// Create a new single or multi party instant message conversation between the caller and specified users. At least one user ID must be provided or\nan error response will be sent.\n\nThe caller is implicitly included in the members of the\ncreated chat.\n\nDuplicate users will be included in the membership of the chat but\nthe duplication will be silently ignored.\n\nIf there is an existing IM conversation with the same set of participants then\nthe id of that existing stream will be returned.\n\nThis method was incorrectly specified to take a query parameter in\nversion 1.0 of this specification but now expects a JSON array of\nuser IDs in the body of the request.\n
         /// </summary>
         /// <exception cref="SymphonyOSS.RestApiClient.Generated.OpenApi.PodApi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="uidList">List of (integer) User IDs of participants</param>
@@ -640,7 +953,7 @@ namespace SymphonyOSS.RestApiClient.Generated.OpenApi.PodApi.Api
         }
 
         /// <summary>
-        /// Create a new single or multi party instant message conversation At least one user ID must be provided or\nan error response will be sent.\n\nThe caller is implicitly included in the members of the\ncreated chat.\n\nDuplicate users will be included in the membership of the chat but\nthe duplication will be silently ignored.\n\nIf there is an existing IM conversation with the same set of participants then\nthe id of that existing stream will be returned.\n\nThis method was incorrectly specified to take a query parameter in\nversion 1.0 of this specification but now expects a JSON array of\nuser IDs in the body of the request.\n
+        /// Create a new single or multi party instant message conversation between the caller and specified users. At least one user ID must be provided or\nan error response will be sent.\n\nThe caller is implicitly included in the members of the\ncreated chat.\n\nDuplicate users will be included in the membership of the chat but\nthe duplication will be silently ignored.\n\nIf there is an existing IM conversation with the same set of participants then\nthe id of that existing stream will be returned.\n\nThis method was incorrectly specified to take a query parameter in\nversion 1.0 of this specification but now expects a JSON array of\nuser IDs in the body of the request.\n
         /// </summary>
         /// <exception cref="SymphonyOSS.RestApiClient.Generated.OpenApi.PodApi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="uidList">List of (integer) User IDs of participants</param>
@@ -654,7 +967,7 @@ namespace SymphonyOSS.RestApiClient.Generated.OpenApi.PodApi.Api
         }
 
         /// <summary>
-        /// Create a new single or multi party instant message conversation At least one user ID must be provided or\nan error response will be sent.\n\nThe caller is implicitly included in the members of the\ncreated chat.\n\nDuplicate users will be included in the membership of the chat but\nthe duplication will be silently ignored.\n\nIf there is an existing IM conversation with the same set of participants then\nthe id of that existing stream will be returned.\n\nThis method was incorrectly specified to take a query parameter in\nversion 1.0 of this specification but now expects a JSON array of\nuser IDs in the body of the request.\n
+        /// Create a new single or multi party instant message conversation between the caller and specified users. At least one user ID must be provided or\nan error response will be sent.\n\nThe caller is implicitly included in the members of the\ncreated chat.\n\nDuplicate users will be included in the membership of the chat but\nthe duplication will be silently ignored.\n\nIf there is an existing IM conversation with the same set of participants then\nthe id of that existing stream will be returned.\n\nThis method was incorrectly specified to take a query parameter in\nversion 1.0 of this specification but now expects a JSON array of\nuser IDs in the body of the request.\n
         /// </summary>
         /// <exception cref="SymphonyOSS.RestApiClient.Generated.OpenApi.PodApi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="uidList">List of (integer) User IDs of participants</param>
@@ -1378,6 +1691,328 @@ namespace SymphonyOSS.RestApiClient.Generated.OpenApi.PodApi.Api
             return new ApiResponse<RoomDetail>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
                 (RoomDetail) Configuration.ApiClient.Deserialize(localVarResponse, typeof(RoomDetail)));
+            
+        }
+
+        /// <summary>
+        /// Retrieve a list of all streams of which the requesting user is a member,\nsorted by creation date (ascending).\n 
+        /// </summary>
+        /// <exception cref="SymphonyOSS.RestApiClient.Generated.OpenApi.PodApi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="sessionToken">Session authentication token.</param>
+        /// <param name="skip">No. of results to skip.\n (optional)</param>
+        /// <param name="limit">Max no. of results to return. If no value is provided, 50 is the default.\n (optional)</param>
+        /// <param name="filter">Stream filtering criteria. (optional)</param>
+        /// <returns>StreamList</returns>
+        public StreamList V1StreamsListPost (string sessionToken, int? skip = null, int? limit = null, StreamFilter filter = null)
+        {
+             ApiResponse<StreamList> localVarResponse = V1StreamsListPostWithHttpInfo(sessionToken, skip, limit, filter);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Retrieve a list of all streams of which the requesting user is a member,\nsorted by creation date (ascending).\n 
+        /// </summary>
+        /// <exception cref="SymphonyOSS.RestApiClient.Generated.OpenApi.PodApi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="sessionToken">Session authentication token.</param>
+        /// <param name="skip">No. of results to skip.\n (optional)</param>
+        /// <param name="limit">Max no. of results to return. If no value is provided, 50 is the default.\n (optional)</param>
+        /// <param name="filter">Stream filtering criteria. (optional)</param>
+        /// <returns>ApiResponse of StreamList</returns>
+        public ApiResponse< StreamList > V1StreamsListPostWithHttpInfo (string sessionToken, int? skip = null, int? limit = null, StreamFilter filter = null)
+        {
+            // verify the required parameter 'sessionToken' is set
+            if (sessionToken == null)
+                throw new ApiException(400, "Missing required parameter 'sessionToken' when calling StreamsApi->V1StreamsListPost");
+
+            var localVarPath = "/v1/streams/list";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new Dictionary<String, String>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            // set "format" to json by default
+            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
+            localVarPathParams.Add("format", "json");
+            if (skip != null) localVarQueryParams.Add("skip", Configuration.ApiClient.ParameterToString(skip)); // query parameter
+            if (limit != null) localVarQueryParams.Add("limit", Configuration.ApiClient.ParameterToString(limit)); // query parameter
+            if (sessionToken != null) localVarHeaderParams.Add("sessionToken", Configuration.ApiClient.ParameterToString(sessionToken)); // header parameter
+            if (filter.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = Configuration.ApiClient.Serialize(filter); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = filter; // byte array
+            }
+
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (localVarStatusCode >= 400)
+                throw new ApiException (localVarStatusCode, "Error calling V1StreamsListPost: " + localVarResponse.Content, localVarResponse.Content);
+            else if (localVarStatusCode == 0)
+                throw new ApiException (localVarStatusCode, "Error calling V1StreamsListPost: " + localVarResponse.ErrorMessage, localVarResponse.ErrorMessage);
+
+            return new ApiResponse<StreamList>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (StreamList) Configuration.ApiClient.Deserialize(localVarResponse, typeof(StreamList)));
+            
+        }
+
+        /// <summary>
+        /// Retrieve a list of all streams of which the requesting user is a member,\nsorted by creation date (ascending).\n 
+        /// </summary>
+        /// <exception cref="SymphonyOSS.RestApiClient.Generated.OpenApi.PodApi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="sessionToken">Session authentication token.</param>
+        /// <param name="skip">No. of results to skip.\n (optional)</param>
+        /// <param name="limit">Max no. of results to return. If no value is provided, 50 is the default.\n (optional)</param>
+        /// <param name="filter">Stream filtering criteria. (optional)</param>
+        /// <returns>Task of StreamList</returns>
+        public async System.Threading.Tasks.Task<StreamList> V1StreamsListPostAsync (string sessionToken, int? skip = null, int? limit = null, StreamFilter filter = null)
+        {
+             ApiResponse<StreamList> localVarResponse = await V1StreamsListPostAsyncWithHttpInfo(sessionToken, skip, limit, filter);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Retrieve a list of all streams of which the requesting user is a member,\nsorted by creation date (ascending).\n 
+        /// </summary>
+        /// <exception cref="SymphonyOSS.RestApiClient.Generated.OpenApi.PodApi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="sessionToken">Session authentication token.</param>
+        /// <param name="skip">No. of results to skip.\n (optional)</param>
+        /// <param name="limit">Max no. of results to return. If no value is provided, 50 is the default.\n (optional)</param>
+        /// <param name="filter">Stream filtering criteria. (optional)</param>
+        /// <returns>Task of ApiResponse (StreamList)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<StreamList>> V1StreamsListPostAsyncWithHttpInfo (string sessionToken, int? skip = null, int? limit = null, StreamFilter filter = null)
+        {
+            // verify the required parameter 'sessionToken' is set
+            if (sessionToken == null)
+                throw new ApiException(400, "Missing required parameter 'sessionToken' when calling StreamsApi->V1StreamsListPost");
+
+            var localVarPath = "/v1/streams/list";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new Dictionary<String, String>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            // set "format" to json by default
+            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
+            localVarPathParams.Add("format", "json");
+            if (skip != null) localVarQueryParams.Add("skip", Configuration.ApiClient.ParameterToString(skip)); // query parameter
+            if (limit != null) localVarQueryParams.Add("limit", Configuration.ApiClient.ParameterToString(limit)); // query parameter
+            if (sessionToken != null) localVarHeaderParams.Add("sessionToken", Configuration.ApiClient.ParameterToString(sessionToken)); // header parameter
+            if (filter.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = Configuration.ApiClient.Serialize(filter); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = filter; // byte array
+            }
+
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (localVarStatusCode >= 400)
+                throw new ApiException (localVarStatusCode, "Error calling V1StreamsListPost: " + localVarResponse.Content, localVarResponse.Content);
+            else if (localVarStatusCode == 0)
+                throw new ApiException (localVarStatusCode, "Error calling V1StreamsListPost: " + localVarResponse.ErrorMessage, localVarResponse.ErrorMessage);
+
+            return new ApiResponse<StreamList>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (StreamList) Configuration.ApiClient.Deserialize(localVarResponse, typeof(StreamList)));
+            
+        }
+
+        /// <summary>
+        /// Get information about a partcular stream. 
+        /// </summary>
+        /// <exception cref="SymphonyOSS.RestApiClient.Generated.OpenApi.PodApi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="sid">Stream Id</param>
+        /// <param name="sessionToken">Session authentication token.</param>
+        /// <returns>StreamAttributes</returns>
+        public StreamAttributes V1StreamsSidInfoGet (string sid, string sessionToken)
+        {
+             ApiResponse<StreamAttributes> localVarResponse = V1StreamsSidInfoGetWithHttpInfo(sid, sessionToken);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Get information about a partcular stream. 
+        /// </summary>
+        /// <exception cref="SymphonyOSS.RestApiClient.Generated.OpenApi.PodApi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="sid">Stream Id</param>
+        /// <param name="sessionToken">Session authentication token.</param>
+        /// <returns>ApiResponse of StreamAttributes</returns>
+        public ApiResponse< StreamAttributes > V1StreamsSidInfoGetWithHttpInfo (string sid, string sessionToken)
+        {
+            // verify the required parameter 'sid' is set
+            if (sid == null)
+                throw new ApiException(400, "Missing required parameter 'sid' when calling StreamsApi->V1StreamsSidInfoGet");
+            // verify the required parameter 'sessionToken' is set
+            if (sessionToken == null)
+                throw new ApiException(400, "Missing required parameter 'sessionToken' when calling StreamsApi->V1StreamsSidInfoGet");
+
+            var localVarPath = "/v1/streams/{sid}/info";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new Dictionary<String, String>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            // set "format" to json by default
+            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
+            localVarPathParams.Add("format", "json");
+            if (sid != null) localVarPathParams.Add("sid", Configuration.ApiClient.ParameterToString(sid)); // path parameter
+            if (sessionToken != null) localVarHeaderParams.Add("sessionToken", Configuration.ApiClient.ParameterToString(sessionToken)); // header parameter
+
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (localVarStatusCode >= 400)
+                throw new ApiException (localVarStatusCode, "Error calling V1StreamsSidInfoGet: " + localVarResponse.Content, localVarResponse.Content);
+            else if (localVarStatusCode == 0)
+                throw new ApiException (localVarStatusCode, "Error calling V1StreamsSidInfoGet: " + localVarResponse.ErrorMessage, localVarResponse.ErrorMessage);
+
+            return new ApiResponse<StreamAttributes>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (StreamAttributes) Configuration.ApiClient.Deserialize(localVarResponse, typeof(StreamAttributes)));
+            
+        }
+
+        /// <summary>
+        /// Get information about a partcular stream. 
+        /// </summary>
+        /// <exception cref="SymphonyOSS.RestApiClient.Generated.OpenApi.PodApi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="sid">Stream Id</param>
+        /// <param name="sessionToken">Session authentication token.</param>
+        /// <returns>Task of StreamAttributes</returns>
+        public async System.Threading.Tasks.Task<StreamAttributes> V1StreamsSidInfoGetAsync (string sid, string sessionToken)
+        {
+             ApiResponse<StreamAttributes> localVarResponse = await V1StreamsSidInfoGetAsyncWithHttpInfo(sid, sessionToken);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Get information about a partcular stream. 
+        /// </summary>
+        /// <exception cref="SymphonyOSS.RestApiClient.Generated.OpenApi.PodApi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="sid">Stream Id</param>
+        /// <param name="sessionToken">Session authentication token.</param>
+        /// <returns>Task of ApiResponse (StreamAttributes)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<StreamAttributes>> V1StreamsSidInfoGetAsyncWithHttpInfo (string sid, string sessionToken)
+        {
+            // verify the required parameter 'sid' is set
+            if (sid == null)
+                throw new ApiException(400, "Missing required parameter 'sid' when calling StreamsApi->V1StreamsSidInfoGet");
+            // verify the required parameter 'sessionToken' is set
+            if (sessionToken == null)
+                throw new ApiException(400, "Missing required parameter 'sessionToken' when calling StreamsApi->V1StreamsSidInfoGet");
+
+            var localVarPath = "/v1/streams/{sid}/info";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new Dictionary<String, String>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            // set "format" to json by default
+            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
+            localVarPathParams.Add("format", "json");
+            if (sid != null) localVarPathParams.Add("sid", Configuration.ApiClient.ParameterToString(sid)); // path parameter
+            if (sessionToken != null) localVarHeaderParams.Add("sessionToken", Configuration.ApiClient.ParameterToString(sessionToken)); // header parameter
+
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (localVarStatusCode >= 400)
+                throw new ApiException (localVarStatusCode, "Error calling V1StreamsSidInfoGet: " + localVarResponse.Content, localVarResponse.Content);
+            else if (localVarStatusCode == 0)
+                throw new ApiException (localVarStatusCode, "Error calling V1StreamsSidInfoGet: " + localVarResponse.ErrorMessage, localVarResponse.ErrorMessage);
+
+            return new ApiResponse<StreamAttributes>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (StreamAttributes) Configuration.ApiClient.Deserialize(localVarResponse, typeof(StreamAttributes)));
             
         }
 

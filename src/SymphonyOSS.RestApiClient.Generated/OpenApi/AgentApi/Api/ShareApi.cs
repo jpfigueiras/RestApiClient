@@ -57,6 +57,33 @@ namespace SymphonyOSS.RestApiClient.Generated.OpenApi.AgentApi.Api
         /// <param name="shareContent"></param>
         /// <returns>ApiResponse of V2Message</returns>
         ApiResponse<V2Message> V1StreamSidSharePostWithHttpInfo (string sid, string sessionToken, string keyManagerToken, ShareContent shareContent);
+        /// <summary>
+        /// PROVISIONAL -  Share a piece of content into Symphony
+        /// </summary>
+        /// <remarks>
+        /// Given a 3rd party content (eg. news article), it can share to the given stream.\nThe stream can be a chatroom, an IM or a multiparty IM.\n
+        /// </remarks>
+        /// <exception cref="SymphonyOSS.RestApiClient.Generated.OpenApi.AgentApi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="sid">Stream ID</param>
+        /// <param name="sessionToken">Session authentication token.</param>
+        /// <param name="shareContent"></param>
+        /// <param name="keyManagerToken">Key Manager authentication token. (optional)</param>
+        /// <returns>V2Message</returns>
+        V2Message V3StreamSidSharePost (string sid, string sessionToken, ShareContent shareContent, string keyManagerToken = null);
+
+        /// <summary>
+        /// PROVISIONAL -  Share a piece of content into Symphony
+        /// </summary>
+        /// <remarks>
+        /// Given a 3rd party content (eg. news article), it can share to the given stream.\nThe stream can be a chatroom, an IM or a multiparty IM.\n
+        /// </remarks>
+        /// <exception cref="SymphonyOSS.RestApiClient.Generated.OpenApi.AgentApi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="sid">Stream ID</param>
+        /// <param name="sessionToken">Session authentication token.</param>
+        /// <param name="shareContent"></param>
+        /// <param name="keyManagerToken">Key Manager authentication token. (optional)</param>
+        /// <returns>ApiResponse of V2Message</returns>
+        ApiResponse<V2Message> V3StreamSidSharePostWithHttpInfo (string sid, string sessionToken, ShareContent shareContent, string keyManagerToken = null);
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
@@ -86,6 +113,33 @@ namespace SymphonyOSS.RestApiClient.Generated.OpenApi.AgentApi.Api
         /// <param name="shareContent"></param>
         /// <returns>Task of ApiResponse (V2Message)</returns>
         System.Threading.Tasks.Task<ApiResponse<V2Message>> V1StreamSidSharePostAsyncWithHttpInfo (string sid, string sessionToken, string keyManagerToken, ShareContent shareContent);
+        /// <summary>
+        /// PROVISIONAL -  Share a piece of content into Symphony
+        /// </summary>
+        /// <remarks>
+        /// Given a 3rd party content (eg. news article), it can share to the given stream.\nThe stream can be a chatroom, an IM or a multiparty IM.\n
+        /// </remarks>
+        /// <exception cref="SymphonyOSS.RestApiClient.Generated.OpenApi.AgentApi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="sid">Stream ID</param>
+        /// <param name="sessionToken">Session authentication token.</param>
+        /// <param name="shareContent"></param>
+        /// <param name="keyManagerToken">Key Manager authentication token. (optional)</param>
+        /// <returns>Task of V2Message</returns>
+        System.Threading.Tasks.Task<V2Message> V3StreamSidSharePostAsync (string sid, string sessionToken, ShareContent shareContent, string keyManagerToken = null);
+
+        /// <summary>
+        /// PROVISIONAL -  Share a piece of content into Symphony
+        /// </summary>
+        /// <remarks>
+        /// Given a 3rd party content (eg. news article), it can share to the given stream.\nThe stream can be a chatroom, an IM or a multiparty IM.\n
+        /// </remarks>
+        /// <exception cref="SymphonyOSS.RestApiClient.Generated.OpenApi.AgentApi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="sid">Stream ID</param>
+        /// <param name="sessionToken">Session authentication token.</param>
+        /// <param name="shareContent"></param>
+        /// <param name="keyManagerToken">Key Manager authentication token. (optional)</param>
+        /// <returns>Task of ApiResponse (V2Message)</returns>
+        System.Threading.Tasks.Task<ApiResponse<V2Message>> V3StreamSidSharePostAsyncWithHttpInfo (string sid, string sessionToken, ShareContent shareContent, string keyManagerToken = null);
         #endregion Asynchronous Operations
     }
 
@@ -360,6 +414,191 @@ namespace SymphonyOSS.RestApiClient.Generated.OpenApi.AgentApi.Api
                 throw new ApiException (localVarStatusCode, "Error calling V1StreamSidSharePost: " + localVarResponse.Content, localVarResponse.Content);
             else if (localVarStatusCode == 0)
                 throw new ApiException (localVarStatusCode, "Error calling V1StreamSidSharePost: " + localVarResponse.ErrorMessage, localVarResponse.ErrorMessage);
+
+            return new ApiResponse<V2Message>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (V2Message) Configuration.ApiClient.Deserialize(localVarResponse, typeof(V2Message)));
+            
+        }
+
+        /// <summary>
+        /// PROVISIONAL -  Share a piece of content into Symphony Given a 3rd party content (eg. news article), it can share to the given stream.\nThe stream can be a chatroom, an IM or a multiparty IM.\n
+        /// </summary>
+        /// <exception cref="SymphonyOSS.RestApiClient.Generated.OpenApi.AgentApi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="sid">Stream ID</param>
+        /// <param name="sessionToken">Session authentication token.</param>
+        /// <param name="shareContent"></param>
+        /// <param name="keyManagerToken">Key Manager authentication token. (optional)</param>
+        /// <returns>V2Message</returns>
+        public V2Message V3StreamSidSharePost (string sid, string sessionToken, ShareContent shareContent, string keyManagerToken = null)
+        {
+             ApiResponse<V2Message> localVarResponse = V3StreamSidSharePostWithHttpInfo(sid, sessionToken, shareContent, keyManagerToken);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// PROVISIONAL -  Share a piece of content into Symphony Given a 3rd party content (eg. news article), it can share to the given stream.\nThe stream can be a chatroom, an IM or a multiparty IM.\n
+        /// </summary>
+        /// <exception cref="SymphonyOSS.RestApiClient.Generated.OpenApi.AgentApi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="sid">Stream ID</param>
+        /// <param name="sessionToken">Session authentication token.</param>
+        /// <param name="shareContent"></param>
+        /// <param name="keyManagerToken">Key Manager authentication token. (optional)</param>
+        /// <returns>ApiResponse of V2Message</returns>
+        public ApiResponse< V2Message > V3StreamSidSharePostWithHttpInfo (string sid, string sessionToken, ShareContent shareContent, string keyManagerToken = null)
+        {
+            // verify the required parameter 'sid' is set
+            if (sid == null)
+                throw new ApiException(400, "Missing required parameter 'sid' when calling ShareApi->V3StreamSidSharePost");
+            // verify the required parameter 'sessionToken' is set
+            if (sessionToken == null)
+                throw new ApiException(400, "Missing required parameter 'sessionToken' when calling ShareApi->V3StreamSidSharePost");
+            // verify the required parameter 'shareContent' is set
+            if (shareContent == null)
+                throw new ApiException(400, "Missing required parameter 'shareContent' when calling ShareApi->V3StreamSidSharePost");
+
+            var localVarPath = "/v3/stream/{sid}/share";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new Dictionary<String, String>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            // set "format" to json by default
+            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
+            localVarPathParams.Add("format", "json");
+            if (sid != null) localVarPathParams.Add("sid", Configuration.ApiClient.ParameterToString(sid)); // path parameter
+            if (sessionToken != null) localVarHeaderParams.Add("sessionToken", Configuration.ApiClient.ParameterToString(sessionToken)); // header parameter
+            if (keyManagerToken != null) localVarHeaderParams.Add("keyManagerToken", Configuration.ApiClient.ParameterToString(keyManagerToken)); // header parameter
+            if (shareContent.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = Configuration.ApiClient.Serialize(shareContent); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = shareContent; // byte array
+            }
+
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (localVarStatusCode >= 400)
+                throw new ApiException (localVarStatusCode, "Error calling V3StreamSidSharePost: " + localVarResponse.Content, localVarResponse.Content);
+            else if (localVarStatusCode == 0)
+                throw new ApiException (localVarStatusCode, "Error calling V3StreamSidSharePost: " + localVarResponse.ErrorMessage, localVarResponse.ErrorMessage);
+
+            return new ApiResponse<V2Message>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (V2Message) Configuration.ApiClient.Deserialize(localVarResponse, typeof(V2Message)));
+            
+        }
+
+        /// <summary>
+        /// PROVISIONAL -  Share a piece of content into Symphony Given a 3rd party content (eg. news article), it can share to the given stream.\nThe stream can be a chatroom, an IM or a multiparty IM.\n
+        /// </summary>
+        /// <exception cref="SymphonyOSS.RestApiClient.Generated.OpenApi.AgentApi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="sid">Stream ID</param>
+        /// <param name="sessionToken">Session authentication token.</param>
+        /// <param name="shareContent"></param>
+        /// <param name="keyManagerToken">Key Manager authentication token. (optional)</param>
+        /// <returns>Task of V2Message</returns>
+        public async System.Threading.Tasks.Task<V2Message> V3StreamSidSharePostAsync (string sid, string sessionToken, ShareContent shareContent, string keyManagerToken = null)
+        {
+             ApiResponse<V2Message> localVarResponse = await V3StreamSidSharePostAsyncWithHttpInfo(sid, sessionToken, shareContent, keyManagerToken);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// PROVISIONAL -  Share a piece of content into Symphony Given a 3rd party content (eg. news article), it can share to the given stream.\nThe stream can be a chatroom, an IM or a multiparty IM.\n
+        /// </summary>
+        /// <exception cref="SymphonyOSS.RestApiClient.Generated.OpenApi.AgentApi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="sid">Stream ID</param>
+        /// <param name="sessionToken">Session authentication token.</param>
+        /// <param name="shareContent"></param>
+        /// <param name="keyManagerToken">Key Manager authentication token. (optional)</param>
+        /// <returns>Task of ApiResponse (V2Message)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<V2Message>> V3StreamSidSharePostAsyncWithHttpInfo (string sid, string sessionToken, ShareContent shareContent, string keyManagerToken = null)
+        {
+            // verify the required parameter 'sid' is set
+            if (sid == null)
+                throw new ApiException(400, "Missing required parameter 'sid' when calling ShareApi->V3StreamSidSharePost");
+            // verify the required parameter 'sessionToken' is set
+            if (sessionToken == null)
+                throw new ApiException(400, "Missing required parameter 'sessionToken' when calling ShareApi->V3StreamSidSharePost");
+            // verify the required parameter 'shareContent' is set
+            if (shareContent == null)
+                throw new ApiException(400, "Missing required parameter 'shareContent' when calling ShareApi->V3StreamSidSharePost");
+
+            var localVarPath = "/v3/stream/{sid}/share";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new Dictionary<String, String>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            // set "format" to json by default
+            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
+            localVarPathParams.Add("format", "json");
+            if (sid != null) localVarPathParams.Add("sid", Configuration.ApiClient.ParameterToString(sid)); // path parameter
+            if (sessionToken != null) localVarHeaderParams.Add("sessionToken", Configuration.ApiClient.ParameterToString(sessionToken)); // header parameter
+            if (keyManagerToken != null) localVarHeaderParams.Add("keyManagerToken", Configuration.ApiClient.ParameterToString(keyManagerToken)); // header parameter
+            if (shareContent.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = Configuration.ApiClient.Serialize(shareContent); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = shareContent; // byte array
+            }
+
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (localVarStatusCode >= 400)
+                throw new ApiException (localVarStatusCode, "Error calling V3StreamSidSharePost: " + localVarResponse.Content, localVarResponse.Content);
+            else if (localVarStatusCode == 0)
+                throw new ApiException (localVarStatusCode, "Error calling V3StreamSidSharePost: " + localVarResponse.ErrorMessage, localVarResponse.ErrorMessage);
 
             return new ApiResponse<V2Message>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),

@@ -171,6 +171,33 @@ namespace SymphonyOSS.RestApiClient.Generated.OpenApi.AgentApi.Api
         /// <param name="limit">Max No. of messages to return. If no value is provided, 50 is the default.\n (optional)</param>
         /// <returns>ApiResponse of V2MessageList</returns>
         ApiResponse<V2MessageList> V2StreamSidMessageGetWithHttpInfo (string sid, long? since, string sessionToken, string keyManagerToken, int? offset = null, int? limit = null);
+        /// <summary>
+        /// PROVISIONAL - Post a message to one existing stream.
+        /// </summary>
+        /// <remarks>
+        /// Post a new message to the given stream. The stream can be a chatroom,\nan IM or a multiparty IM.\n\nYou may include an attachment on the message (see the V2MessageSubmission parameter).\n\nIf the message parameter type is TEXT then the message contains plain\ntext and cannot include formating, hash tags, mentions etc.\n\nIf the message parameter type is MessageML then the message contains\nMessageML which allows for these entities.\n\nIf the message is in MessageML and fails schema validation\na client error results\n\nIf the message is sent then 200 is returned.\n\nRegarding authentication, you must either use the sessionToken which was created for delegated app access\nor both the sessionToken and keyManagerToken together.\n
+        /// </remarks>
+        /// <exception cref="SymphonyOSS.RestApiClient.Generated.OpenApi.AgentApi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="sid">Stream ID</param>
+        /// <param name="sessionToken">Session authentication token.</param>
+        /// <param name="message"></param>
+        /// <param name="keyManagerToken">Key Manager authentication token. (optional)</param>
+        /// <returns>V2Message</returns>
+        V2Message V3StreamSidMessageCreatePost (string sid, string sessionToken, V2MessageSubmission message, string keyManagerToken = null);
+
+        /// <summary>
+        /// PROVISIONAL - Post a message to one existing stream.
+        /// </summary>
+        /// <remarks>
+        /// Post a new message to the given stream. The stream can be a chatroom,\nan IM or a multiparty IM.\n\nYou may include an attachment on the message (see the V2MessageSubmission parameter).\n\nIf the message parameter type is TEXT then the message contains plain\ntext and cannot include formating, hash tags, mentions etc.\n\nIf the message parameter type is MessageML then the message contains\nMessageML which allows for these entities.\n\nIf the message is in MessageML and fails schema validation\na client error results\n\nIf the message is sent then 200 is returned.\n\nRegarding authentication, you must either use the sessionToken which was created for delegated app access\nor both the sessionToken and keyManagerToken together.\n
+        /// </remarks>
+        /// <exception cref="SymphonyOSS.RestApiClient.Generated.OpenApi.AgentApi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="sid">Stream ID</param>
+        /// <param name="sessionToken">Session authentication token.</param>
+        /// <param name="message"></param>
+        /// <param name="keyManagerToken">Key Manager authentication token. (optional)</param>
+        /// <returns>ApiResponse of V2Message</returns>
+        ApiResponse<V2Message> V3StreamSidMessageCreatePostWithHttpInfo (string sid, string sessionToken, V2MessageSubmission message, string keyManagerToken = null);
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
@@ -314,6 +341,33 @@ namespace SymphonyOSS.RestApiClient.Generated.OpenApi.AgentApi.Api
         /// <param name="limit">Max No. of messages to return. If no value is provided, 50 is the default.\n (optional)</param>
         /// <returns>Task of ApiResponse (V2MessageList)</returns>
         System.Threading.Tasks.Task<ApiResponse<V2MessageList>> V2StreamSidMessageGetAsyncWithHttpInfo (string sid, long? since, string sessionToken, string keyManagerToken, int? offset = null, int? limit = null);
+        /// <summary>
+        /// PROVISIONAL - Post a message to one existing stream.
+        /// </summary>
+        /// <remarks>
+        /// Post a new message to the given stream. The stream can be a chatroom,\nan IM or a multiparty IM.\n\nYou may include an attachment on the message (see the V2MessageSubmission parameter).\n\nIf the message parameter type is TEXT then the message contains plain\ntext and cannot include formating, hash tags, mentions etc.\n\nIf the message parameter type is MessageML then the message contains\nMessageML which allows for these entities.\n\nIf the message is in MessageML and fails schema validation\na client error results\n\nIf the message is sent then 200 is returned.\n\nRegarding authentication, you must either use the sessionToken which was created for delegated app access\nor both the sessionToken and keyManagerToken together.\n
+        /// </remarks>
+        /// <exception cref="SymphonyOSS.RestApiClient.Generated.OpenApi.AgentApi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="sid">Stream ID</param>
+        /// <param name="sessionToken">Session authentication token.</param>
+        /// <param name="message"></param>
+        /// <param name="keyManagerToken">Key Manager authentication token. (optional)</param>
+        /// <returns>Task of V2Message</returns>
+        System.Threading.Tasks.Task<V2Message> V3StreamSidMessageCreatePostAsync (string sid, string sessionToken, V2MessageSubmission message, string keyManagerToken = null);
+
+        /// <summary>
+        /// PROVISIONAL - Post a message to one existing stream.
+        /// </summary>
+        /// <remarks>
+        /// Post a new message to the given stream. The stream can be a chatroom,\nan IM or a multiparty IM.\n\nYou may include an attachment on the message (see the V2MessageSubmission parameter).\n\nIf the message parameter type is TEXT then the message contains plain\ntext and cannot include formating, hash tags, mentions etc.\n\nIf the message parameter type is MessageML then the message contains\nMessageML which allows for these entities.\n\nIf the message is in MessageML and fails schema validation\na client error results\n\nIf the message is sent then 200 is returned.\n\nRegarding authentication, you must either use the sessionToken which was created for delegated app access\nor both the sessionToken and keyManagerToken together.\n
+        /// </remarks>
+        /// <exception cref="SymphonyOSS.RestApiClient.Generated.OpenApi.AgentApi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="sid">Stream ID</param>
+        /// <param name="sessionToken">Session authentication token.</param>
+        /// <param name="message"></param>
+        /// <param name="keyManagerToken">Key Manager authentication token. (optional)</param>
+        /// <returns>Task of ApiResponse (V2Message)</returns>
+        System.Threading.Tasks.Task<ApiResponse<V2Message>> V3StreamSidMessageCreatePostAsyncWithHttpInfo (string sid, string sessionToken, V2MessageSubmission message, string keyManagerToken = null);
         #endregion Asynchronous Operations
     }
 
@@ -1336,6 +1390,191 @@ namespace SymphonyOSS.RestApiClient.Generated.OpenApi.AgentApi.Api
             return new ApiResponse<V2MessageList>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
                 (V2MessageList) Configuration.ApiClient.Deserialize(localVarResponse, typeof(V2MessageList)));
+            
+        }
+
+        /// <summary>
+        /// PROVISIONAL - Post a message to one existing stream. Post a new message to the given stream. The stream can be a chatroom,\nan IM or a multiparty IM.\n\nYou may include an attachment on the message (see the V2MessageSubmission parameter).\n\nIf the message parameter type is TEXT then the message contains plain\ntext and cannot include formating, hash tags, mentions etc.\n\nIf the message parameter type is MessageML then the message contains\nMessageML which allows for these entities.\n\nIf the message is in MessageML and fails schema validation\na client error results\n\nIf the message is sent then 200 is returned.\n\nRegarding authentication, you must either use the sessionToken which was created for delegated app access\nor both the sessionToken and keyManagerToken together.\n
+        /// </summary>
+        /// <exception cref="SymphonyOSS.RestApiClient.Generated.OpenApi.AgentApi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="sid">Stream ID</param>
+        /// <param name="sessionToken">Session authentication token.</param>
+        /// <param name="message"></param>
+        /// <param name="keyManagerToken">Key Manager authentication token. (optional)</param>
+        /// <returns>V2Message</returns>
+        public V2Message V3StreamSidMessageCreatePost (string sid, string sessionToken, V2MessageSubmission message, string keyManagerToken = null)
+        {
+             ApiResponse<V2Message> localVarResponse = V3StreamSidMessageCreatePostWithHttpInfo(sid, sessionToken, message, keyManagerToken);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// PROVISIONAL - Post a message to one existing stream. Post a new message to the given stream. The stream can be a chatroom,\nan IM or a multiparty IM.\n\nYou may include an attachment on the message (see the V2MessageSubmission parameter).\n\nIf the message parameter type is TEXT then the message contains plain\ntext and cannot include formating, hash tags, mentions etc.\n\nIf the message parameter type is MessageML then the message contains\nMessageML which allows for these entities.\n\nIf the message is in MessageML and fails schema validation\na client error results\n\nIf the message is sent then 200 is returned.\n\nRegarding authentication, you must either use the sessionToken which was created for delegated app access\nor both the sessionToken and keyManagerToken together.\n
+        /// </summary>
+        /// <exception cref="SymphonyOSS.RestApiClient.Generated.OpenApi.AgentApi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="sid">Stream ID</param>
+        /// <param name="sessionToken">Session authentication token.</param>
+        /// <param name="message"></param>
+        /// <param name="keyManagerToken">Key Manager authentication token. (optional)</param>
+        /// <returns>ApiResponse of V2Message</returns>
+        public ApiResponse< V2Message > V3StreamSidMessageCreatePostWithHttpInfo (string sid, string sessionToken, V2MessageSubmission message, string keyManagerToken = null)
+        {
+            // verify the required parameter 'sid' is set
+            if (sid == null)
+                throw new ApiException(400, "Missing required parameter 'sid' when calling MessagesApi->V3StreamSidMessageCreatePost");
+            // verify the required parameter 'sessionToken' is set
+            if (sessionToken == null)
+                throw new ApiException(400, "Missing required parameter 'sessionToken' when calling MessagesApi->V3StreamSidMessageCreatePost");
+            // verify the required parameter 'message' is set
+            if (message == null)
+                throw new ApiException(400, "Missing required parameter 'message' when calling MessagesApi->V3StreamSidMessageCreatePost");
+
+            var localVarPath = "/v3/stream/{sid}/message/create";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new Dictionary<String, String>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            // set "format" to json by default
+            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
+            localVarPathParams.Add("format", "json");
+            if (sid != null) localVarPathParams.Add("sid", Configuration.ApiClient.ParameterToString(sid)); // path parameter
+            if (sessionToken != null) localVarHeaderParams.Add("sessionToken", Configuration.ApiClient.ParameterToString(sessionToken)); // header parameter
+            if (keyManagerToken != null) localVarHeaderParams.Add("keyManagerToken", Configuration.ApiClient.ParameterToString(keyManagerToken)); // header parameter
+            if (message.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = Configuration.ApiClient.Serialize(message); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = message; // byte array
+            }
+
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (localVarStatusCode >= 400)
+                throw new ApiException (localVarStatusCode, "Error calling V3StreamSidMessageCreatePost: " + localVarResponse.Content, localVarResponse.Content);
+            else if (localVarStatusCode == 0)
+                throw new ApiException (localVarStatusCode, "Error calling V3StreamSidMessageCreatePost: " + localVarResponse.ErrorMessage, localVarResponse.ErrorMessage);
+
+            return new ApiResponse<V2Message>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (V2Message) Configuration.ApiClient.Deserialize(localVarResponse, typeof(V2Message)));
+            
+        }
+
+        /// <summary>
+        /// PROVISIONAL - Post a message to one existing stream. Post a new message to the given stream. The stream can be a chatroom,\nan IM or a multiparty IM.\n\nYou may include an attachment on the message (see the V2MessageSubmission parameter).\n\nIf the message parameter type is TEXT then the message contains plain\ntext and cannot include formating, hash tags, mentions etc.\n\nIf the message parameter type is MessageML then the message contains\nMessageML which allows for these entities.\n\nIf the message is in MessageML and fails schema validation\na client error results\n\nIf the message is sent then 200 is returned.\n\nRegarding authentication, you must either use the sessionToken which was created for delegated app access\nor both the sessionToken and keyManagerToken together.\n
+        /// </summary>
+        /// <exception cref="SymphonyOSS.RestApiClient.Generated.OpenApi.AgentApi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="sid">Stream ID</param>
+        /// <param name="sessionToken">Session authentication token.</param>
+        /// <param name="message"></param>
+        /// <param name="keyManagerToken">Key Manager authentication token. (optional)</param>
+        /// <returns>Task of V2Message</returns>
+        public async System.Threading.Tasks.Task<V2Message> V3StreamSidMessageCreatePostAsync (string sid, string sessionToken, V2MessageSubmission message, string keyManagerToken = null)
+        {
+             ApiResponse<V2Message> localVarResponse = await V3StreamSidMessageCreatePostAsyncWithHttpInfo(sid, sessionToken, message, keyManagerToken);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// PROVISIONAL - Post a message to one existing stream. Post a new message to the given stream. The stream can be a chatroom,\nan IM or a multiparty IM.\n\nYou may include an attachment on the message (see the V2MessageSubmission parameter).\n\nIf the message parameter type is TEXT then the message contains plain\ntext and cannot include formating, hash tags, mentions etc.\n\nIf the message parameter type is MessageML then the message contains\nMessageML which allows for these entities.\n\nIf the message is in MessageML and fails schema validation\na client error results\n\nIf the message is sent then 200 is returned.\n\nRegarding authentication, you must either use the sessionToken which was created for delegated app access\nor both the sessionToken and keyManagerToken together.\n
+        /// </summary>
+        /// <exception cref="SymphonyOSS.RestApiClient.Generated.OpenApi.AgentApi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="sid">Stream ID</param>
+        /// <param name="sessionToken">Session authentication token.</param>
+        /// <param name="message"></param>
+        /// <param name="keyManagerToken">Key Manager authentication token. (optional)</param>
+        /// <returns>Task of ApiResponse (V2Message)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<V2Message>> V3StreamSidMessageCreatePostAsyncWithHttpInfo (string sid, string sessionToken, V2MessageSubmission message, string keyManagerToken = null)
+        {
+            // verify the required parameter 'sid' is set
+            if (sid == null)
+                throw new ApiException(400, "Missing required parameter 'sid' when calling MessagesApi->V3StreamSidMessageCreatePost");
+            // verify the required parameter 'sessionToken' is set
+            if (sessionToken == null)
+                throw new ApiException(400, "Missing required parameter 'sessionToken' when calling MessagesApi->V3StreamSidMessageCreatePost");
+            // verify the required parameter 'message' is set
+            if (message == null)
+                throw new ApiException(400, "Missing required parameter 'message' when calling MessagesApi->V3StreamSidMessageCreatePost");
+
+            var localVarPath = "/v3/stream/{sid}/message/create";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new Dictionary<String, String>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            // set "format" to json by default
+            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
+            localVarPathParams.Add("format", "json");
+            if (sid != null) localVarPathParams.Add("sid", Configuration.ApiClient.ParameterToString(sid)); // path parameter
+            if (sessionToken != null) localVarHeaderParams.Add("sessionToken", Configuration.ApiClient.ParameterToString(sessionToken)); // header parameter
+            if (keyManagerToken != null) localVarHeaderParams.Add("keyManagerToken", Configuration.ApiClient.ParameterToString(keyManagerToken)); // header parameter
+            if (message.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = Configuration.ApiClient.Serialize(message); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = message; // byte array
+            }
+
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (localVarStatusCode >= 400)
+                throw new ApiException (localVarStatusCode, "Error calling V3StreamSidMessageCreatePost: " + localVarResponse.Content, localVarResponse.Content);
+            else if (localVarStatusCode == 0)
+                throw new ApiException (localVarStatusCode, "Error calling V3StreamSidMessageCreatePost: " + localVarResponse.ErrorMessage, localVarResponse.ErrorMessage);
+
+            return new ApiResponse<V2Message>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (V2Message) Configuration.ApiClient.Deserialize(localVarResponse, typeof(V2Message)));
             
         }
 

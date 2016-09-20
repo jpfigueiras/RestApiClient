@@ -36,11 +36,11 @@ namespace SymphonyOSS.RestApiClient.Generated.OpenApi.AgentApi.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="V1HealthCheckResponse" /> class.
         /// </summary>
-        /// <param name="PodConnectivity">PodConnectivity.</param>
-        /// <param name="PodConnectivityError">PodConnectivityError.</param>
-        /// <param name="KeyManagerConnectivity">KeyManagerConnectivity.</param>
-        /// <param name="KeyManagerConnectivityError">KeyManagerConnectivityError.</param>
-        /// <param name="Version">Version.</param>
+        /// <param name="PodConnectivity">Indicates whether the Agent server can connect to the Pod.</param>
+        /// <param name="PodConnectivityError">Error details in case of no Pod connectivity.</param>
+        /// <param name="KeyManagerConnectivity">Indicates whether the Agent server can connect to the Key Manager.</param>
+        /// <param name="KeyManagerConnectivityError">Error details in case of no Key Manager connectivity.</param>
+        /// <param name="Version">The version number of the Agent server.</param>
         public V1HealthCheckResponse(bool? PodConnectivity = null, string PodConnectivityError = null, bool? KeyManagerConnectivity = null, string KeyManagerConnectivityError = null, string Version = null)
         {
             
@@ -58,28 +58,33 @@ namespace SymphonyOSS.RestApiClient.Generated.OpenApi.AgentApi.Model
         }
         
         /// <summary>
-        /// Gets or Sets PodConnectivity
+        /// Indicates whether the Agent server can connect to the Pod
         /// </summary>
+        /// <value>Indicates whether the Agent server can connect to the Pod</value>
         [DataMember(Name="podConnectivity", EmitDefaultValue=false)]
         public bool? PodConnectivity { get; set; }
         /// <summary>
-        /// Gets or Sets PodConnectivityError
+        /// Error details in case of no Pod connectivity
         /// </summary>
+        /// <value>Error details in case of no Pod connectivity</value>
         [DataMember(Name="podConnectivityError", EmitDefaultValue=false)]
         public string PodConnectivityError { get; set; }
         /// <summary>
-        /// Gets or Sets KeyManagerConnectivity
+        /// Indicates whether the Agent server can connect to the Key Manager
         /// </summary>
+        /// <value>Indicates whether the Agent server can connect to the Key Manager</value>
         [DataMember(Name="keyManagerConnectivity", EmitDefaultValue=false)]
         public bool? KeyManagerConnectivity { get; set; }
         /// <summary>
-        /// Gets or Sets KeyManagerConnectivityError
+        /// Error details in case of no Key Manager connectivity
         /// </summary>
+        /// <value>Error details in case of no Key Manager connectivity</value>
         [DataMember(Name="keyManagerConnectivityError", EmitDefaultValue=false)]
         public string KeyManagerConnectivityError { get; set; }
         /// <summary>
-        /// Gets or Sets Version
+        /// The version number of the Agent server
         /// </summary>
+        /// <value>The version number of the Agent server</value>
         [DataMember(Name="version", EmitDefaultValue=false)]
         public string Version { get; set; }
         /// <summary>

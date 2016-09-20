@@ -48,7 +48,7 @@ namespace SymphonyOSS.RestApiClient.Api.PodApi
             new Dictionary<EventHandler<ConnectionRequestEventArgs>, Task>();
 
         private Timer _connectionPollTimer;
-        
+
         private event EventHandler<ConnectionRequestEventArgs> _onConnectionRequest;
 
         public event EventHandler<ConnectionRequestEventArgs> OnConnectionRequest
